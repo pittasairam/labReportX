@@ -20,7 +20,7 @@ public class LabrexApplication {
 		SpringApplication.run(LabrexApplication.class, args);
 	}
 
-	/*@Bean
+	@Bean
 	public ApplicationRunner hospitalDataInitializer(HospitalRepository hospitalRepository, LaboratoryWorkerRepository repository) {
 		return args -> {
 			for (int i = 0; i < 5; i++) {
@@ -31,5 +31,5 @@ public class LabrexApplication {
 				repository.save(laboratoryWorker);
 			}
 		};
-	}*/
+	}
 }

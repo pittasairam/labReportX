@@ -21,8 +21,4 @@ public class Patient extends BaseUser{
     @JsonIgnore
     private List<Report> reports;
 
-
-
-
-
 }

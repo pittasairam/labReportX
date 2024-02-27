@@ -16,8 +16,11 @@ import java.util.List;
 @Builder
 public class Hospital {
     @Id
-    private String hospitalId= UniqueIdGenerator.generateUniqueId();
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hospital_sequence")
+    @SequenceGenerator(name = "hospital_sequence", sequenceName = "hospital_seq", allocationSize = 1, initialValue = 1000000)
+    private Long id;
     private String name;
+    private String image;
     @OneToMany(mappedBy = "hospital",cascade = CascadeType.REMOVE)
     List<LaboratoryWorker> workers;
 

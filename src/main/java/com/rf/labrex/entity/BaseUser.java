@@ -15,7 +15,8 @@ import java.util.Collections;
 
 
 @Data
-@MappedSuperclass
+//@MappedSuperclass
+@Entity
 public class BaseUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

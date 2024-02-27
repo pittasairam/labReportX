@@ -19,6 +19,4 @@ public class LaboratoryWorker extends BaseUser{
  @JoinColumn(name = "hospitalId")
  private Hospital hospital;
 
-
-
 }
