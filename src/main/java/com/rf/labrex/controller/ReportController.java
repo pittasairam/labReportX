@@ -1,12 +1,17 @@
 package com.rf.labrex.controller;
 
+import com.rf.labrex.dto.ReportDto;
 import com.rf.labrex.dto.SaveReportRequest;
 import com.rf.labrex.dto.UpdateReportRequest;
 import com.rf.labrex.service.ReportService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Pageable;
+import java.util.List;
 
 @RestController()
 @RequestMapping("api/v1/report")
@@ -38,30 +43,35 @@ public class ReportController {
     }
 
     // laboranta ait raporlar
-    public ResponseEntity<?> reportsForWorker(@PathVariable String workerId) {
-        return null;
+    @GetMapping("/list/worker/{workerId}")
+    public Page<ReportDto> reportsForWorker(@PathVariable String workerId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size ) {
+        return reportService.reportsForWorker(workerId,page,size);
     }
     /*------------------------------------------------------*/
 
     /*BURADAKİ İŞLEMİ HASTA VE LABORANT YAPABİLİR*/
     // hastaya ait raporları görüntüleme
-    public ResponseEntity<?> reportsForPatients() {
-        return null;
+    @GetMapping("/list/patient/{patientId}")
+    public Page reportsForPatients(@PathVariable String patientId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size) {
+        return reportService.reportsForPatient(patientId,page,size);
     }
 
     // herhangi bir raporu görüntüleme
-    public ResponseEntity<?> get() {
-        return null;
+    @GetMapping("/{id}")
+    public ReportDto get(@PathVariable String id) {
+        return reportService.getReport(id);
     }
 
     // Hasta Adı Soyadı kimlik numarasi ,Laboran Adi Soyadı ile Arama
-    public ResponseEntity<?> search() {
-        return null;
+    @GetMapping("/search/{value}")
+    public List<ReportDto> search(@PathVariable String value) {
+        return reportService.search(value);
     }
 
     // Rapor tarihi ile sıralama
-    public ResponseEntity<?> searchByDate() {
-        return null;
+    @GetMapping("/sort/worker/{workerId}")
+    public Page<ReportDto> sortByDate(@PathVariable String workerId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size) {
+        return reportService.sortByDate(workerId,page,size);
     }
     /*---------------------------------------------*/
 

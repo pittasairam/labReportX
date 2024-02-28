@@ -8,6 +8,7 @@ import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.LaboratoryWorkerRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,10 +17,12 @@ public class WorkerService {
 
     private final LaboratoryWorkerRepository workerRepository;
     private final HospitalService hospitalService;
+    private final PasswordEncoder encoder;
     public ApiResponse save(SaveWorkerRequest request, Long hospitalId, HttpServletRequest url) {
         LaboratoryWorker worker=request.toWorker(request);
         Hospital hospital=hospitalService.findById(hospitalId);
         worker.setHospital(hospital);
+        worker.setPassword(encoder.encode(request.getPassword()));
         workerRepository.save(worker);
         ApiResponse apiResponse=new ApiResponse();
         apiResponse=ApiResponse.builder().status(200).path(url.getRequestURI()).dateTime(apiResponse.getDateTime()).message("Laborant Kaydoldu").build();
