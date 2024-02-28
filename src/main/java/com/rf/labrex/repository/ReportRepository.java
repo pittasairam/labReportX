@@ -13,5 +13,6 @@ public interface ReportRepository extends JpaRepository<Report,String> {
     Page<Report> findByWorkerId(String workerId, Pageable pageable);
     Page<Report> findByPatientId(String patientId,Pageable pageable);
     Page<Report> findByWorkerIdOrderByDateTimeDesc(String workerId, Pageable pageable);
+    Page<Report> findByPatientIdOrderByDateTimeDesc(String patientId, Pageable pageable);
     List<Report> findByWorkerNameContainingIgnoreCaseOrWorkerLastNameContainingIgnoreCaseOrWorkerIdentificationNumberContainingIgnoreCaseOrPatientNameContainingIgnoreCaseOrPatientLastNameContainingIgnoreCaseOrPatientIdentificationNumberContainingIgnoreCaseOrTitleContainingIgnoreCaseOrDetailsContainingIgnoreCase(String workerName, String workerLastName, String workerIdentificationNumber, String patientName, String patientLastName, String patientIdentificationNumber, String title, String details);
 }

@@ -47,6 +47,11 @@ public class ReportController {
     public Page<ReportDto> reportsForWorker(@PathVariable String workerId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size ) {
         return reportService.reportsForWorker(workerId,page,size);
     }
+    // Rapor tarihi ile sıralama laboranta ait raporlar
+    @GetMapping("/sort/worker/{workerId}")
+    public Page<ReportDto> sortByDate(@PathVariable String workerId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size) {
+        return reportService.sortByDate(workerId,page,size);
+    }
     /*------------------------------------------------------*/
 
     /*BURADAKİ İŞLEMİ HASTA VE LABORANT YAPABİLİR*/
@@ -68,10 +73,10 @@ public class ReportController {
         return reportService.search(value);
     }
 
-    // Rapor tarihi ile sıralama
-    @GetMapping("/sort/worker/{workerId}")
-    public Page<ReportDto> sortByDate(@PathVariable String workerId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size) {
-        return reportService.sortByDate(workerId,page,size);
+    // Rapor tarihi ile sıralama hastaya ait raporlar
+    @GetMapping("/sort/patient/{PatientId}")
+    public Page<ReportDto> sortingByDateForWorker(@PathVariable String patientId,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "50") int size) {
+        return reportService.sortingByDateForWorker(patientId,page,size);
     }
     /*---------------------------------------------*/
 

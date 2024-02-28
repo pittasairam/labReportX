@@ -30,4 +30,5 @@ public class HospitalController {
         return ResponseEntity.ok().body(hospitalService.delete(id,url));
     }
 
+
 }

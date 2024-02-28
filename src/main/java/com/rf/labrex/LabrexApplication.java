@@ -12,9 +12,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@SpringBootApplication
 public class LabrexApplication {
+
+	public LabrexApplication(PasswordEncoder encoder) {
+		this.encoder = encoder;
+	}
+
+	private final PasswordEncoder encoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LabrexApplication.class, args);
@@ -23,13 +30,11 @@ public class LabrexApplication {
 	@Bean
 	public ApplicationRunner hospitalDataInitializer(HospitalRepository hospitalRepository, LaboratoryWorkerRepository repository) {
 		return args -> {
-			for (int i = 0; i < 5; i++) {
-				Hospital hospital = new Hospital();
-				hospitalRepository.save(hospital);
-				LaboratoryWorker laboratoryWorker=new LaboratoryWorker();
-				laboratoryWorker.setRole(UserRole.WORKER);
-				repository.save(laboratoryWorker);
-			}
+		  LaboratoryWorker worker=LaboratoryWorker.builder().name("Furkan").lastName("Can").build();
+		  worker.setRole(UserRole.WORKER);
+		  worker.setPassword(encoder.encode("Ef123456789"));
+		  worker.setIdentificationNumber("52657784048");
+		  repository.save(worker);
 		};
 	}
 }

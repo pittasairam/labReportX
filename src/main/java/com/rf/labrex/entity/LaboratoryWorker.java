@@ -14,13 +14,14 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LaboratoryWorker extends BaseUser{
- private String name;
- private String lastName;
- @ManyToOne
- @JoinColumn(name = "hospitalId")
- private Hospital hospital;
- @OneToMany(mappedBy = "worker",cascade = CascadeType.REMOVE)
- List<Report> reports;
+public class LaboratoryWorker extends BaseUser {
+    private String name;
+    private String lastName;
+    @ManyToOne
+    @JoinColumn(name = "hospitalId")
+    private Hospital hospital;
+    @OneToMany(mappedBy = "worker", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    List<Report> reports;
 
 }

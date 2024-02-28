@@ -1,6 +1,8 @@
 package com.rf.labrex.service;
 
+import com.rf.labrex.dto.PatientDto;
 import com.rf.labrex.dto.SavePatientRequest;
+import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.Patient;
 import com.rf.labrex.errorManagement.ApiResponse;
 import com.rf.labrex.exception.NotFoundException;
@@ -10,12 +12,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class PatientService {
 
     private final PatientRepository patientRepository;
     private final PasswordEncoder encoder;
+    private final DtoConverter converter;
     public ApiResponse save(SavePatientRequest request, HttpServletRequest url) {
         ApiResponse apiResponse=new ApiResponse();
         Patient patient=request.toPatient(request);
@@ -35,5 +41,10 @@ public class PatientService {
 
     protected Patient findById(String patientId) {
         return patientRepository.findById(patientId).orElseThrow(()->new NotFoundException("Hasta"));
+    }
+
+    public List<PatientDto> list() {
+        List<Patient> patients=patientRepository.findAll();
+        return patients.stream().map(converter::convertPatient).collect(Collectors.toList());
     }
 }

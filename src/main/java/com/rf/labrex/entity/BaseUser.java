@@ -1,5 +1,6 @@
 package com.rf.labrex.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 @Data
@@ -26,6 +28,9 @@ public class BaseUser implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    @OneToMany(mappedBy = "baseUser",cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

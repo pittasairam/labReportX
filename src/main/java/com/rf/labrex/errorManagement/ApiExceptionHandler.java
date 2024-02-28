@@ -1,5 +1,6 @@
 package com.rf.labrex.errorManagement;
 
+import com.rf.labrex.exception.AuthException;
 import com.rf.labrex.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,15 @@ public class ApiExceptionHandler {
         apiResponse=ApiResponse.builder().path(request.getRequestURI()).message(ex.getMessage()).status(404).dateTime(apiResponse.getDateTime()).build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
     }
-
+    @ExceptionHandler(AuthException.class)
+   public ResponseEntity<ApiResponse> BadRequestException(RuntimeException ex,HttpServletRequest request){
+        ApiResponse apiResponse=ApiResponse.builder()
+                .path(request.getRequestURI())
+                .dateTime(LocalDateTime.now())
+                .message(ex.getMessage())
+                .status(400)
+                .build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiResponse);
+    }
 
 }

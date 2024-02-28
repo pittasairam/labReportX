@@ -1,5 +1,6 @@
 package com.rf.labrex.errorManagement;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,8 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ApiResponse {
     private int status;
     private String path;

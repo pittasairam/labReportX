@@ -1,5 +1,6 @@
 package com.rf.labrex.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rf.labrex.config.UniqueIdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,8 @@ public class Hospital {
     private Long id;
     private String name;
     private String image;
-    @OneToMany(mappedBy = "hospital",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     List<LaboratoryWorker> workers;
 
 

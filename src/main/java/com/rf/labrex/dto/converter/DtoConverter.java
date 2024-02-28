@@ -1,13 +1,7 @@
 package com.rf.labrex.dto.converter;
 
-import com.rf.labrex.dto.HospitalDto;
-import com.rf.labrex.dto.PatientDto;
-import com.rf.labrex.dto.ReportDto;
-import com.rf.labrex.dto.WorkerDto;
-import com.rf.labrex.entity.Hospital;
-import com.rf.labrex.entity.LaboratoryWorker;
-import com.rf.labrex.entity.Patient;
-import com.rf.labrex.entity.Report;
+import com.rf.labrex.dto.*;
+import com.rf.labrex.entity.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -39,5 +33,13 @@ public class DtoConverter {
                 .image(report.getImage())
                 .build();
         return reportDto;
+    }
+    public BaseUserDto convertUser(BaseUser user){
+        BaseUserDto baseUserDto= BaseUserDto.builder()
+                .id(user.getId())
+                .identificationNumber(user.getIdentificationNumber())
+                .role(user.getRole())
+                .build();
+        return baseUserDto;
     }
 }

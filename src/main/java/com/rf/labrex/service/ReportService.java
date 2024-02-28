@@ -86,6 +86,10 @@ public class ReportService {
         return reports.stream().map(converter::convertReport).collect(Collectors.toList());
     }
 
+    public Page<ReportDto> sortingByDateForWorker(String patientId, int page, int size) {
+        Page<Report> list=reportRepository.findByPatientIdOrderByDateTimeDesc(patientId,PageRequest.of(page,size));
+        return list.map(converter::convertReport);
+    }
 }
 /*
 * List<Report> list=reportRepository.findAll();
