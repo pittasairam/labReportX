@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface BaseUserRepository extends JpaRepository<BaseUser,String> {
     Optional<BaseUser> findByIdentificationNumber(String number);
+    boolean existsByIdentificationNumber(String number);
 }

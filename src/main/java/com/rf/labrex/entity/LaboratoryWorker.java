@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -18,5 +20,7 @@ public class LaboratoryWorker extends BaseUser{
  @ManyToOne
  @JoinColumn(name = "hospitalId")
  private Hospital hospital;
+ @OneToMany(mappedBy = "worker",cascade = CascadeType.REMOVE)
+ List<Report> reports;
 
 }

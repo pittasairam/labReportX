@@ -5,12 +5,13 @@ import com.rf.labrex.dto.SaveHospitalRequest;
 import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.Hospital;
 import com.rf.labrex.errorManagement.ApiResponse;
-import com.rf.labrex.exception.HospitalNotFoundException;
+import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.HospitalRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,10 +26,14 @@ public class HospitalService {
     }
 
     public ApiResponse delete(Long id, HttpServletRequest url) {
-        Hospital hospital=hospitalRepository.findById(id).orElseThrow(()->new HospitalNotFoundException());
+        Hospital hospital=findById(id);
         hospitalRepository.delete(hospital);
         ApiResponse apiResponse=new ApiResponse();
         apiResponse=ApiResponse.builder().path(url.getRequestURI()).dateTime(apiResponse.getDateTime()).status(200).message("Hastane Silindi").build();
     return apiResponse;
+    }
+
+    protected Hospital findById(Long hospitalId) {
+        return hospitalRepository.findById(hospitalId).orElseThrow(()-> new NotFoundException("Hastane"));
     }
 }

@@ -19,6 +19,9 @@ public class Report {
     @ManyToOne
     @JoinColumn(name = "patientId")
     private Patient patient;
+    @ManyToOne
+    @JoinColumn(name = "workerId")
+    private LaboratoryWorker worker;
     private String title;
     private String details;
     private LocalDateTime dateTime=LocalDateTime.now();

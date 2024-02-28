@@ -1,6 +1,6 @@
 package com.rf.labrex.errorManagement;
 
-import com.rf.labrex.exception.HospitalNotFoundException;
+import com.rf.labrex.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class ApiExceptionHandler {
         apiError = ApiResponse.builder().dateTime(apiError.getDateTime()).errors(errors).message("validation Error").status(400).path(request.getRequestURI()).build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
-    @ExceptionHandler(HospitalNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ApiResponse> NotFoundException(RuntimeException ex,HttpServletRequest request){
         ApiResponse apiResponse=new ApiResponse();
         apiResponse=ApiResponse.builder().path(request.getRequestURI()).message(ex.getMessage()).status(404).dateTime(apiResponse.getDateTime()).build();

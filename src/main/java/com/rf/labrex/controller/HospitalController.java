@@ -29,4 +29,5 @@ public class HospitalController {
     ResponseEntity<ApiResponse> deleteHospital(@PathVariable Long id, HttpServletRequest url){
         return ResponseEntity.ok().body(hospitalService.delete(id,url));
     }
+
 }
