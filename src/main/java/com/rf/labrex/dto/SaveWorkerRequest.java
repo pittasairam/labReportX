@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Primary;
 
 @Data
 @Builder
@@ -34,7 +33,7 @@ public class SaveWorkerRequest {
 
     public LaboratoryWorker toWorker(SaveWorkerRequest request){
         LaboratoryWorker worker=LaboratoryWorker.builder().name(request.getName()).lastName(request.getLastName()).build();
-        worker.setRole(UserRole.WORKER);
+        worker.setRole(UserRole.ROLE_WORKER);
         worker.setIdentificationNumber(request.getIdentificationNumber());
         return worker;
     }

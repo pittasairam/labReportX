@@ -1,7 +1,6 @@
 package com.rf.labrex.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.rf.labrex.config.UniqueIdGenerator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

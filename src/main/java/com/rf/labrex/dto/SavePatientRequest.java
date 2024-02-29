@@ -32,7 +32,7 @@ public class SavePatientRequest {
 
     public Patient toPatient(SavePatientRequest request){
         Patient patient=Patient.builder().name(request.getName()).lastName(request.lastName).build();
-        patient.setRole(UserRole.PATİENT);
+        patient.setRole(UserRole.ROLE_PATIENT);
         patient.setIdentificationNumber(request.identificationNumber);
         patient.setPassword(request.getPassword());
         return patient;
