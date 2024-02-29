@@ -94,7 +94,7 @@ bu linke tıklayın
   
 ## Kullanılan Teknolojiler
 
- Java,SpringBoot,Spring Security,Docker,MySql
+ Java,SpringBoot,Spring Security,Docker,MySql,swagger
 
  
 
