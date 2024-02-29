@@ -1,5 +1,6 @@
 package com.rf.labrex.errorManagement;
 
+import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.exception.AuthException;
 import com.rf.labrex.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
+
+    // validayon hataları
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> validationErrorHandler(MethodArgumentNotValidException ex, HttpServletRequest request) {
         ApiResponse apiError = new ApiResponse();
@@ -26,12 +29,14 @@ public class ApiExceptionHandler {
         apiError = ApiResponse.builder().dateTime(apiError.getDateTime()).errors(errors).message("validation Error").status(400).path(request.getRequestURI()).build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
+    // not found hataları
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ApiResponse> NotFoundException(RuntimeException ex,HttpServletRequest request){
         ApiResponse apiResponse=new ApiResponse();
         apiResponse=ApiResponse.builder().path(request.getRequestURI()).message(ex.getMessage()).status(404).dateTime(apiResponse.getDateTime()).build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
     }
+    // bad request hataları
     @ExceptionHandler(AuthException.class)
    public ResponseEntity<ApiResponse> BadRequestException(RuntimeException ex,HttpServletRequest request){
         ApiResponse apiResponse=ApiResponse.builder()
@@ -41,6 +46,17 @@ public class ApiExceptionHandler {
                 .status(400)
                 .build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiResponse);
+    }
+    // yetki hataları
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<ApiResponse> UnauthorizedException(RuntimeException ex,HttpServletRequest request){
+        ApiResponse apiResponse=ApiResponse.builder()
+                .path(request.getRequestURI())
+                .dateTime(LocalDateTime.now())
+                .message(ex.getMessage())
+                .status(401)
+                .build();
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(apiResponse);
     }
 
 }

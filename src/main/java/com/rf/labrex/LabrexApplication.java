@@ -1,8 +1,10 @@
 package com.rf.labrex;
 
 
+import com.rf.labrex.entity.BaseUser;
 import com.rf.labrex.entity.LaboratoryWorker;
 import com.rf.labrex.entity.UserRole;
+import com.rf.labrex.repository.BaseUserRepository;
 import com.rf.labrex.repository.HospitalRepository;
 import com.rf.labrex.repository.LaboratoryWorkerRepository;
 import org.springframework.boot.ApplicationRunner;
@@ -25,13 +27,13 @@ public class LabrexApplication {
 	}
 
 	@Bean
-	public ApplicationRunner hospitalDataInitializer(HospitalRepository hospitalRepository, LaboratoryWorkerRepository repository) {
+	public ApplicationRunner hospitalDataInitializer(BaseUserRepository repository) {
 		return args -> {
-		  LaboratoryWorker worker=LaboratoryWorker.builder().name("Furkan").lastName("Can").build();
-		  worker.setRole(UserRole.ROLE_ADMIN);
-		  worker.setPassword(encoder.encode("Ef123456789"));
-		  worker.setIdentificationNumber("52657784048");
-		  repository.save(worker);
+			BaseUser baseUser=new BaseUser();
+			baseUser.setPassword(encoder.encode("Ef123456789"));
+			baseUser.setIdentificationNumber("89649430676");
+			baseUser.setRole(UserRole.ROLE_ADMIN);
+			repository.save(baseUser);
 		};
 	}
 }

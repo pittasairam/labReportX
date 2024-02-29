@@ -1,5 +1,7 @@
 package com.rf.labrex.service;
 
+import com.rf.labrex.config.QueryConfig;
+import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.dto.ReportDto;
 import com.rf.labrex.dto.SaveReportRequest;
 import com.rf.labrex.dto.UpdateReportRequest;
@@ -16,9 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,13 +29,13 @@ public class ReportService {
     private final WorkerService workerService;
     private final PatientService patientService;
     private final DtoConverter converter;
+    private final QueryConfig config;
 
     public ApiResponse save(SaveReportRequest request, String workerId, String patientId, HttpServletRequest url) {
         ApiResponse apiResponse = new ApiResponse();
         LaboratoryWorker worker = workerService.findById(workerId);
         Patient patient = patientService.findById(patientId);
         Report report=Report.builder().title(request.getTitle()).details(request.getDetails()).worker(worker).patient(patient).dateTime(LocalDateTime.now()).build();
-
         reportRepository.save(report);
         apiResponse=ApiResponse.builder().status(200).path(url.getRequestURI()).message("Rapor Oluşturuldu").dateTime(apiResponse.getDateTime()).build();
         return apiResponse;
@@ -44,6 +44,7 @@ public class ReportService {
     public ApiResponse update(UpdateReportRequest request, String id, HttpServletRequest path) {
         ApiResponse apiResponse=new ApiResponse();
         Report report=findById(id);
+        if(!config.isAuthorized(report.getWorker(),config.getAuthentication())) throw new AuthorizationException();
         report.setDateTime(request.getDateTime());
         report.setTitle(request.getTitle());
         report.setDetails(request.getDetails());
@@ -53,6 +54,7 @@ public class ReportService {
     }
     public ApiResponse delete(String id,HttpServletRequest path) {
         Report report=findById(id);
+        if(!config.isAuthorized(report.getWorker(),config.getAuthentication())) throw new AuthorizationException();
         reportRepository.delete(report);
         return ApiResponse.builder().status(200).path(path.getRequestURI()).message("Rapor Silindi").dateTime(LocalDateTime.now()).build();
     }
@@ -77,6 +79,7 @@ public class ReportService {
 
     public ReportDto getReport(String id) {
         Report report=findById(id);
+        if(!(config.isAuthorized(report.getWorker(),config.getAuthentication()) || config.isAuthorized(report.getPatient(),config.getAuthentication()))) throw new AuthorizationException();
         return converter.convertReport(report);
     }
 

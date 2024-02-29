@@ -1,5 +1,6 @@
 package com.rf.labrex.service;
 
+import com.rf.labrex.config.QueryConfig;
 import com.rf.labrex.dto.HospitalDto;
 import com.rf.labrex.dto.SaveHospitalRequest;
 import com.rf.labrex.dto.converter.DtoConverter;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class HospitalService {
     private final HospitalRepository hospitalRepository;
     private final DtoConverter converter;
+
     public HospitalDto saveHospital(SaveHospitalRequest request) {
         Hospital hospital= Hospital.builder().name(request.getName()).image(request.getImage()).build();
         hospitalRepository.save(hospital);
