@@ -26,7 +26,7 @@ public class LabrexApplication {
 		SpringApplication.run(LabrexApplication.class, args);
 	}
 
-	@Bean
+/*	@Bean
 	public ApplicationRunner hospitalDataInitializer(BaseUserRepository repository) {
 		return args -> {
 			BaseUser baseUser=new BaseUser();
@@ -35,5 +35,5 @@ public class LabrexApplication {
 			baseUser.setRole(UserRole.ROLE_ADMIN);
 			repository.save(baseUser);
 		};
-	}
+	}*/
 }

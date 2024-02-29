@@ -24,6 +24,7 @@ public class Report {
     private LaboratoryWorker worker;
     private String title;
     private String details;
-    private LocalDateTime dateTime=LocalDateTime.now();
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime dateTime;
     private String image;
 }
