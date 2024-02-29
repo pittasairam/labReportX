@@ -96,6 +96,11 @@ bu linke tıklayın
 
  Java,SpringBoot,Spring Security,Docker,MySql,swagger
 
+ ## Admin şifre
+    "identificationNumber" : "89649430676",
+    "password" : "Ef123456789"
+    
+
  
 
   
