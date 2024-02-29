@@ -69,7 +69,7 @@
 docker pull
 
 ```bash
-  docker pull furkan07/labReport:latest
+  docker pull furkan07/labreport:latest
 ```
 
 image id öğren
