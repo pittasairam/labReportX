@@ -51,7 +51,7 @@
 
 ### HASTA VE LABORANT
 
-- `api/v1/report/list/worker/{patientId}`
+- `api/v1/report/list/patient/{patientId}`
 - `api/v1/report/{id}`
 - `api/v1/report/search/{value}`
 - `api/v1/report/sort/patient/**`
