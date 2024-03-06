@@ -2,6 +2,7 @@ package com.rf.labrex.service;
 
 import com.rf.labrex.entity.BaseUser;
 import com.rf.labrex.entity.Token;
+import com.rf.labrex.exception.InvalidTokenException;
 import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.TokenRepository;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 public class TokenService {
     private final TokenRepository tokenRepository;
+
     public TokenService(TokenRepository tokenRepository) {
         this.tokenRepository = tokenRepository;
     }
@@ -35,6 +37,6 @@ public class TokenService {
     }
     // token alma
     private Token getToken(String token){
-        return tokenRepository.findById(token).orElseThrow(()->new NotFoundException("Token"));
+        return tokenRepository.findById(token).orElseThrow(()->new InvalidTokenException());
     }
 }

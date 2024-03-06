@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/patient")
+
 public class PatientController {
     private final PatientService patientService;
 

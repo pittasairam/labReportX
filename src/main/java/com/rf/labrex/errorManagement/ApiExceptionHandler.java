@@ -2,6 +2,7 @@ package com.rf.labrex.errorManagement;
 
 import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.exception.AuthException;
+import com.rf.labrex.exception.InvalidTokenException;
 import com.rf.labrex.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,7 @@ public class ApiExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
     }
     // bad request hataları
-    @ExceptionHandler(AuthException.class)
+    @ExceptionHandler({AuthException.class, InvalidTokenException.class})
    public ResponseEntity<ApiResponse> BadRequestException(RuntimeException ex,HttpServletRequest request){
         ApiResponse apiResponse=ApiResponse.builder()
                 .path(request.getRequestURI())

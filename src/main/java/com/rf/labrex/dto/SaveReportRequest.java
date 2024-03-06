@@ -9,7 +9,9 @@ import lombok.Data;
 @Builder
 public class SaveReportRequest {
     @Size(min = 5)
+    @NotNull
     private String title;
     @Size(min = 20)
+    @NotNull
     private String details;
 }

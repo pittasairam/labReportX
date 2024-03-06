@@ -12,7 +12,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +39,10 @@ public class HospitalService {
 
     protected Hospital findById(Long hospitalId) {
         return hospitalRepository.findById(hospitalId).orElseThrow(()-> new NotFoundException("Hastane"));
+    }
+
+    public List<HospitalDto> list() {
+        List<Hospital> list=hospitalRepository.findAll();
+        return list.stream().map(converter::convertHospital).collect(Collectors.toList());
     }
 }

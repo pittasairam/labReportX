@@ -9,8 +9,11 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/hospital")
+
 public class HospitalController {
     private final HospitalService hospitalService;
 
@@ -28,6 +31,10 @@ public class HospitalController {
     @DeleteMapping("/delete/{id}")
     ResponseEntity<ApiResponse> deleteHospital(@PathVariable Long id, HttpServletRequest url){
         return ResponseEntity.ok().body(hospitalService.delete(id,url));
+    }
+    @GetMapping("/list")
+    public List<HospitalDto> list(){
+        return hospitalService.list();
     }
 
 

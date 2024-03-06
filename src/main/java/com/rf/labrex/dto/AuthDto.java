@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 @Builder
 public class AuthDto {
-    private  Token token;
+    private  String token;
     private BaseUserDto user;
 }
