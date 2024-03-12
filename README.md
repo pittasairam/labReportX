@@ -33,6 +33,7 @@
 
 - `api/v1/hospital/**`
 - `api/v1/worker/**`
+- `api/v1/report/search/{value}`
 
 ### ADMİN VE LABORANT
 
@@ -53,7 +54,7 @@
 
 - `api/v1/report/list/patient/{patientId}`
 - `api/v1/report/{id}`
-- `api/v1/report/search/{value}`
+
 - `api/v1/report/sort/patient/**`
 
 
