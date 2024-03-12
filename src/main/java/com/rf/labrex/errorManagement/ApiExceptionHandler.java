@@ -1,7 +1,8 @@
 package com.rf.labrex.errorManagement;
 
-import com.rf.labrex.exception.AuthorizationException;
+import com.rf.labrex.dto.ApiResponse;
 import com.rf.labrex.exception.AuthException;
+import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.exception.InvalidTokenException;
 import com.rf.labrex.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-
+// bu sınıf hataların yönetiminin yapıldığı yer amaç requestlere analaşılır responselar dönmek
 @RestControllerAdvice
 public class ApiExceptionHandler {
 

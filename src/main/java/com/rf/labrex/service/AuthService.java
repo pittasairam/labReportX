@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+// auth işlemlerinin yapıldığı sınıf
 @Service
 @RequiredArgsConstructor
 public class AuthService {

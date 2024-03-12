@@ -20,6 +20,7 @@ public class Hospital {
     @SequenceGenerator(name = "hospital_sequence", sequenceName = "hospital_seq", allocationSize = 1, initialValue = 1000000)
     private Long id;
     private String name;
+    @Lob
     private String image;
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.REMOVE)
     @JsonIgnore

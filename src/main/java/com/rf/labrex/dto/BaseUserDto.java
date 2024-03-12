@@ -1,7 +1,7 @@
 package com.rf.labrex.dto;
 
 import com.rf.labrex.entity.UserRole;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Builder;

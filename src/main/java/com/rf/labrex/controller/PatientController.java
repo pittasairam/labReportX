@@ -2,7 +2,7 @@ package com.rf.labrex.controller;
 
 import com.rf.labrex.dto.PatientDto;
 import com.rf.labrex.dto.SavePatientRequest;
-import com.rf.labrex.errorManagement.ApiResponse;
+import com.rf.labrex.dto.ApiResponse;
 import com.rf.labrex.service.PatientService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

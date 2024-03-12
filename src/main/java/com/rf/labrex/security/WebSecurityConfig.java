@@ -1,7 +1,5 @@
 package com.rf.labrex.security;
 
-import com.rf.labrex.entity.UserRole;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,15 +36,14 @@ api/v1/report/{id}
 api/v1/report/sort/patient/**
 -------------------------------------------------------------------------------
  */
+
+// Bu sınıf security ayarlarının yapıldığı yer
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-
-
     public WebSecurityConfig(Filter filter) {
         this.filter = filter;
     }
-
     private final Filter filter;
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{

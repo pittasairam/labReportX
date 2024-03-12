@@ -1,11 +1,8 @@
 package com.rf.labrex.dto;
 
-import com.rf.labrex.entity.Hospital;
 import com.rf.labrex.entity.UserRole;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

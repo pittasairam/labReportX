@@ -3,14 +3,13 @@ package com.rf.labrex.service;
 import com.rf.labrex.entity.BaseUser;
 import com.rf.labrex.entity.Token;
 import com.rf.labrex.exception.InvalidTokenException;
-import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.TokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+// token işlemleri
 @Service
-
 public class TokenService {
     private final TokenRepository tokenRepository;
 

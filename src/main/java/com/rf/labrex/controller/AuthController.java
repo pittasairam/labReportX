@@ -3,7 +3,6 @@ package com.rf.labrex.controller;
 import com.rf.labrex.dto.AuthDto;
 import com.rf.labrex.dto.AuthRequest;
 import com.rf.labrex.dto.BaseUserDto;
-import com.rf.labrex.entity.BaseUser;
 import com.rf.labrex.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
@@ -11,8 +10,6 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 @RestController
 @RequestMapping("api/v1/auth")

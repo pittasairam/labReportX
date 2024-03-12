@@ -1,7 +1,6 @@
 package com.rf.labrex.service;
 
 import com.rf.labrex.config.QueryConfig;
-import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.dto.ReportDto;
 import com.rf.labrex.dto.SaveReportRequest;
 import com.rf.labrex.dto.UpdateReportRequest;
@@ -9,7 +8,8 @@ import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.LaboratoryWorker;
 import com.rf.labrex.entity.Patient;
 import com.rf.labrex.entity.Report;
-import com.rf.labrex.errorManagement.ApiResponse;
+import com.rf.labrex.dto.ApiResponse;
+import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.ReportRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +22,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// rapor işlemlerinin yapıldığı sınıf
 @Service
 @RequiredArgsConstructor
 public class ReportService {

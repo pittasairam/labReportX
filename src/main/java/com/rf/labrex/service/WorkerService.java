@@ -5,7 +5,7 @@ import com.rf.labrex.dto.WorkerDto;
 import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.Hospital;
 import com.rf.labrex.entity.LaboratoryWorker;
-import com.rf.labrex.errorManagement.ApiResponse;
+import com.rf.labrex.dto.ApiResponse;
 import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.LaboratoryWorkerRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// laborant işlemleri
 @Service
 @RequiredArgsConstructor
 public class WorkerService {

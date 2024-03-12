@@ -4,6 +4,8 @@ import com.rf.labrex.dto.*;
 import com.rf.labrex.entity.*;
 import org.springframework.stereotype.Component;
 
+
+// Bu sınıf modelleri dto sınıflarına çevirir
 @Component
 public class DtoConverter {
     public HospitalDto convertHospital(Hospital hospital){HospitalDto hospitalDto=HospitalDto.builder().id(hospital.getId()).image(hospital.getImage()).name(hospital.getName()).build();

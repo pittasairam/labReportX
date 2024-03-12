@@ -26,6 +26,8 @@ public class LabrexApplication {
 		SpringApplication.run(LabrexApplication.class, args);
 	}
 
+
+
 	/*@Bean
 	public ApplicationRunner hospitalDataInitializer(BaseUserRepository repository) {
 		return args -> {

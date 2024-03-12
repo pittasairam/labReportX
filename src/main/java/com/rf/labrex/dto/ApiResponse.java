@@ -1,4 +1,4 @@
-package com.rf.labrex.errorManagement;
+package com.rf.labrex.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+
+// her isteğe aynı formatta cevap vermek için oluşturuldu
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

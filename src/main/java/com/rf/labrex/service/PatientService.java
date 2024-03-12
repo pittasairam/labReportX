@@ -6,7 +6,7 @@ import com.rf.labrex.dto.SavePatientRequest;
 import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.Patient;
 import com.rf.labrex.entity.UserRole;
-import com.rf.labrex.errorManagement.ApiResponse;
+import com.rf.labrex.dto.ApiResponse;
 import com.rf.labrex.exception.AuthorizationException;
 import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.PatientRepository;
@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// hasta işlemlerinin yapıldığı sınıf
 @Service
 @RequiredArgsConstructor
 public class PatientService {

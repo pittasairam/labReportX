@@ -1,11 +1,10 @@
 package com.rf.labrex.service;
 
-import com.rf.labrex.config.QueryConfig;
 import com.rf.labrex.dto.HospitalDto;
 import com.rf.labrex.dto.SaveHospitalRequest;
 import com.rf.labrex.dto.converter.DtoConverter;
 import com.rf.labrex.entity.Hospital;
-import com.rf.labrex.errorManagement.ApiResponse;
+import com.rf.labrex.dto.ApiResponse;
 import com.rf.labrex.exception.NotFoundException;
 import com.rf.labrex.repository.HospitalRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,9 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+// hastane işlemlerinin yapıldığı sınıf
 @Service
 @RequiredArgsConstructor
 public class HospitalService {

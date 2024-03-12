@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
+// bu sınıf security userdetailservice implement ederek kullanıcı kimlik doğrulama ve yetkilendirme işlemi yapılmasına olanak sağlar
 @Service
 public class AppUserService implements UserDetailsService {
     private final BaseUserRepository baseUserRepository;
