@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+
+// bu sınıf her kullanıcıda olması gereken özellikleri içeriyor diğer kullanıcılar bu sınıftan türetilecek
 @Data
 //@MappedSuperclass
 @Entity

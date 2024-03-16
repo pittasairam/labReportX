@@ -4,7 +4,7 @@ package com.rf.labrex.dto;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
-
+// login isteği yapılınca bu sınıf kullanılacak
 @Data
 @Builder
 public class AuthRequest {

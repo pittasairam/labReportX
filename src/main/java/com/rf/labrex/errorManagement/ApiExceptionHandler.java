@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-// bu sınıf hataların yönetiminin yapıldığı yer amaç requestlere analaşılır responselar dönmek
+// bu sınıf hataların yönetiminin yapıldığı yer amaç isteklere analaşılır cevaplar dönmek
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
